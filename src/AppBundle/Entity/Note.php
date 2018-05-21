@@ -41,6 +41,14 @@ class Note
      */
     private $content;
 
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->content ? : '';
+    }
+
 
     /**
      * Get id
