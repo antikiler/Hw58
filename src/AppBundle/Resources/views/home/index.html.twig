@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="col-md-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Главная страница сайта</h3>
+            </div>
+            <div class="panel-body">
+                <p>Для того чтобы добавлять и просматривать заметки вам небходимо <a href="{{ path('fos_user_registration_register') }}">Зарегистрироваться</a>
+                    на сайте или <a href="{{ path('fos_user_security_login') }}">Авторизируйтесь</a></p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

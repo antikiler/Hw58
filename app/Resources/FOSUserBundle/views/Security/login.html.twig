@@ -1,0 +1,29 @@
+{% extends "@FOSUser/layout.html.twig" %}
+
+{% block fos_user_content %}{% trans_default_domain 'FOSUserBundle' %}
+
+    <form class="form-signin" action="{{ path("fos_user_security_check") }}" method="post">
+        {% if error %}
+            <div class="alert alert-danger" role="alert">
+                {{ error.messageKey|trans(error.messageData, 'security') }}
+            </div>
+        {% endif %}
+        <h2 class="form-signin-heading">Вход на сайт</h2>
+
+        {% if csrf_token %}
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+        {% endif %}
+
+        <label for="username" class="sr-only">{{ 'security.login.username'|trans }}</label>
+        <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" class="form-control"/>
+
+        <label for="password" class="sr-only">{{ 'security.login.password'|trans }}</label>
+        <input type="password" id="password" name="_password" required="required" class="form-control"/>
+        <div class="checkbox">
+            <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+            <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+        </div>
+        <input class="btn btn-lg btn-primary btn-block" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" /><br>
+        <a href="{{ path('fos_user_resetting_request') }}">Забыли пароль ?</a>
+    </form>
+{% endblock fos_user_content %}

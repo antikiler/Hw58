@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="col-md-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Список Заметок: <span style="color: #ffeb3b">{{ app.session.get('welcomeMessage') }} {{ app.user.username }}</span></h3>
+            </div>
+            <div class="panel-body">
+                {% for note in notes %}
+                    <div class="well"><p>{{ note.content }}</p></div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        {{ form_start(formNote,{ 'attr': {'class': 'form-add-notes'} }) }}
+        <h3>Форма для добавления заметки</h3>
+        {% if form_errors(formNote.content) %}
+            <div class="alert alert-danger">
+             {{ form_errors(formNote.content) }}
+            </div>
+        {% endif %}
+
+        {{ form_widget(formNote.content,{ 'attr': {'class': 'form-control'} }) }}
+        {{ form_widget(formNote.save,{ 'attr': {'class': 'btn btn-lg btn-success btn-block'} }) }}
+        {{ form_end(formNote) }}
+    </div>
+{% endblock %}
