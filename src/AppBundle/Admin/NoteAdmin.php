@@ -18,7 +18,9 @@ class NoteAdmin extends AbstractAdmin
     {
         $datagridMapper
             ->add('id')
-            ->add('content')
+            ->add('content', null, [
+                'label'=>'Текст заметки'
+            ])
         ;
     }
 
@@ -29,9 +31,12 @@ class NoteAdmin extends AbstractAdmin
     {
         $listMapper
             ->add('id')
-            ->add('content')
+            ->add('content', null, [
+                'label'=>'Текст заметки'
+            ])
             ->add("user",EntityType::class,[
-                'class'=>'AppBundle\Entity\User'
+                'class'=>'AppBundle\Entity\User',
+                'label'=>'Пользователь'
             ])
             ->add('_action', null, array(
                 'actions' => array(
@@ -39,6 +44,7 @@ class NoteAdmin extends AbstractAdmin
                     'edit' => array(),
                     'delete' => array(),
                 ),
+                'label'=>'Действие'
             ))
         ;
     }

@@ -4,12 +4,12 @@ services:
         class: AppBundle\Admin\UserAdmin
         arguments: [~, AppBundle\Entity\User, SonataAdminBundle:CRUD]
         tags:
-            - { name: sonata.admin, manager_type: orm, group: admin, label: User }
+            - { name: sonata.admin, manager_type: orm, group: "Контент", label: "Пользователи" }
         public: true
 
     app.admin.note:
             class: AppBundle\Admin\NoteAdmin
             arguments: [~, AppBundle\Entity\Note, SonataAdminBundle:CRUD]
             tags:
-                - { name: sonata.admin, manager_type: orm, group: admin, label: Note }
+                - { name: sonata.admin, manager_type: orm, group: "Контент", label: "Заметки" }
             public: true
